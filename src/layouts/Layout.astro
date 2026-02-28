@@ -4,8 +4,8 @@ export interface Props {
   description?: string;
 }
 const {
-  title = "HurufLED - Spesialis Reklame & Signage",
-  description = "Jasa pembuatan huruf neon box, videotron, acrylic LED, huruf timbul, billboard, dan pylon sign. Berpengalaman sejak 2009. Garansi 1 tahun. Hubungi kami 24 jam!"
+  title = "HurufLED — Spesialis Reklame & Signage Premium",
+  description = "Jasa pembuatan huruf neon box, videotron, acrylic LED, huruf timbul, billboard, dan pylon sign. Berpengalaman sejak 2009. Garansi 1 tahun. Konsultasi 24 jam!"
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -20,17 +20,23 @@ const {
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!--
+    GANTI FAVICON:
+    Letakkan favicon di: public/images/logo/favicon.ico
+    Lalu aktifkan baris di bawah:
+  -->
+  <!-- <link rel="icon" type="image/x-icon" href="/images/logo/favicon.ico" /> -->
   <title>{title}</title>
 </head>
 <body>
   <slot />
   <script>
     // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
+    const navbar = document.querySelector('.navbar') as HTMLElement;
     window.addEventListener('scroll', () => {
       navbar?.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    }, { passive: true });
 
     // Hamburger menu
     const hamburger = document.querySelector('.hamburger');
@@ -54,7 +60,7 @@ const {
 
     // Counter animation
     const counters = document.querySelectorAll('[data-count]');
-    const observer = new IntersectionObserver((entries) => {
+    const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target as HTMLElement;
@@ -67,26 +73,31 @@ const {
             el.textContent = Math.floor(current) + suffix;
             if (current >= target) clearInterval(timer);
           }, 16);
-          observer.unobserve(el);
+          counterObserver.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
-    counters.forEach(c => observer.observe(c));
+    counters.forEach(c => counterObserver.observe(c));
 
-    // Animate on scroll
-    const animateEls = document.querySelectorAll('.service-card, .testi-card, .portfolio-item, .faq-item');
+    // Animate on scroll (fade up)
+    const animateEls = document.querySelectorAll(
+      '.service-card, .testi-card, .portfolio-item, .faq-item, .feature-item, .contact-item'
+    );
     const aosObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          (entry.target as HTMLElement).style.opacity = '1';
-          (entry.target as HTMLElement).style.transform = 'translateY(0)';
+          setTimeout(() => {
+            (entry.target as HTMLElement).style.opacity = '1';
+            (entry.target as HTMLElement).style.transform = 'translateY(0)';
+          }, (i % 4) * 80);
+          aosObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     animateEls.forEach(el => {
       (el as HTMLElement).style.opacity = '0';
-      (el as HTMLElement).style.transform = 'translateY(30px)';
-      (el as HTMLElement).style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      (el as HTMLElement).style.transform = 'translateY(28px)';
+      (el as HTMLElement).style.transition = 'opacity .5s ease, transform .5s ease';
       aosObserver.observe(el);
     });
   </script>

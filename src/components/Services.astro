@@ -2,66 +2,103 @@
 const services = [
   {
     icon: "💡",
-    title: "Neon Box",
-    desc: "Neon box dengan pencahayaan LED yang terang dan tahan lama, cocok untuk berbagai jenis usaha indoor maupun outdoor.",
+    title: "NEON BOX",
+    desc: "Neon box LED terang dan tahan lama untuk indoor maupun outdoor. Tampil mencolok, konsumsi listrik hemat.",
+    img: "/images/services/neon-box.jpg",
+    fallback: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&h=300&fit=crop",
   },
   {
     icon: "📺",
-    title: "Videotron",
-    desc: "Layar LED luar ruangan resolusi tinggi untuk menampilkan konten digital promosi yang menarik perhatian.",
+    title: "VIDEOTRON",
+    desc: "Layar LED luar ruangan resolusi tinggi. Konten digital promosi yang menarik perhatian ribuan orang.",
+    img: "/images/services/videotron.jpg",
+    fallback: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=300&fit=crop",
   },
   {
     icon: "🔤",
-    title: "Acrylic LED",
-    desc: "Huruf timbul berbahan acrylic dengan backlight LED yang elegan, memberikan kesan premium pada branding Anda.",
+    title: "ACRYLIC LED",
+    desc: "Huruf timbul acrylic backlight LED yang elegan. Kesan premium untuk brand Anda.",
+    img: "/images/services/acrylic-led.jpg",
+    fallback: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop",
   },
   {
     icon: "🔩",
-    title: "Galvanill",
-    desc: "Huruf timbul galvanill yang kokoh dan tahan cuaca ekstrem, ideal untuk fasad gedung dan area outdoor.",
+    title: "GALVANILL",
+    desc: "Huruf timbul galvanill kokoh dan tahan cuaca ekstrem. Ideal untuk fasad gedung outdoor.",
+    img: "/images/services/galvanill.jpg",
+    fallback: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=300&fit=crop",
   },
   {
     icon: "✨",
-    title: "Stainless Steel",
-    desc: "Huruf timbul stainless steel berkualitas tinggi dengan finishing mirror atau brushed yang mewah dan tahan lama.",
+    title: "STAINLESS",
+    desc: "Huruf timbul stainless mirror atau brushed, mewah dan tahan lama puluhan tahun.",
+    img: "/images/services/stainless.jpg",
+    fallback: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=600&h=300&fit=crop",
   },
   {
     icon: "🪧",
-    title: "Billboard",
-    desc: "Papan iklan besar di lokasi strategis untuk maksimalkan visibilitas merek Anda kepada jutaan orang.",
+    title: "BILLBOARD",
+    desc: "Papan iklan besar di lokasi strategis. Maksimalkan visibilitas merek Anda.",
+    img: "/images/services/billboard.jpg",
+    fallback: "https://images.unsplash.com/photo-1486611367184-6053a8a7d404?w=600&h=300&fit=crop",
   },
   {
     icon: "🌟",
-    title: "Neonflex",
-    desc: "Lampu neonflex fleksibel untuk dekorasi dan signage kreatif dengan berbagai warna dan desain unik.",
+    title: "NEONFLEX",
+    desc: "Lampu neonflex fleksibel untuk dekorasi dan signage kreatif berbagai warna.",
+    img: "/images/services/neonflex.jpg",
+    fallback: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&h=300&fit=crop",
   },
   {
     icon: "🏛️",
-    title: "Pylon Sign",
-    desc: "Tiang reklame (pylon/totem) megah sebagai landmark bisnis Anda yang terlihat dari jarak jauh.",
+    title: "PYLON SIGN",
+    desc: "Tiang reklame megah sebagai landmark bisnis Anda yang terlihat dari kejauhan.",
+    img: "/images/services/pylon-sign.jpg",
+    fallback: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&h=300&fit=crop",
   },
 ];
 ---
 <section class="services" id="services">
   <div class="container">
     <div class="services-header">
-      <span class="section-label">Our Work</span>
-      <h2 class="section-title">Layanan Signage Kami</h2>
+      <span class="section-label">OUR SERVICES</span>
+      <h2 class="section-title">Layanan <span class="neon-cyan">Signage</span> Kami</h2>
       <p class="section-subtitle">
-        Kami melayani segala bentuk signage sebagai media dan sarana penunjang bisnis Anda dengan material berkualitas premium.
+        Melayani segala bentuk signage sebagai media penunjang bisnis Anda dengan material berkualitas premium.
       </p>
     </div>
     <div class="services-grid">
       {services.map(s => (
         <div class="service-card">
+          <img
+            src={s.fallback}
+            alt={s.title}
+            class="service-img"
+            width="600" height="160"
+            loading="lazy"
+            onerror={`this.src='${s.fallback}'`}
+            data-local={s.img}
+          />
           <div class="service-icon">{s.icon}</div>
           <h3>{s.title}</h3>
           <p>{s.desc}</p>
           <a href="http://bit.ly/cs-hurufled" target="_blank" rel="noopener" class="service-link">
-            Hubungi Kami →
+            Tanya Sekarang →
           </a>
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  // Try loading local images first, fallback to online
+  document.querySelectorAll('.service-img[data-local]').forEach((img) => {
+    const el = img as HTMLImageElement;
+    const localSrc = el.dataset.local;
+    if (!localSrc) return;
+    const testImg = new Image();
+    testImg.onload = () => { el.src = localSrc; };
+    testImg.src = localSrc;
+  });
+</script>

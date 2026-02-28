@@ -2,58 +2,69 @@
 const features = [
   {
     title: "Garansi 1 Tahun",
-    desc: "Setiap produk yang kami hasilkan dilengkapi garansi penuh 1 tahun demi kenyamanan dan kepercayaan Anda.",
+    desc: "Setiap produk dilengkapi garansi penuh 1 tahun. Kami perbaiki tanpa biaya tambahan.",
   },
   {
     title: "Material Premium",
-    desc: "Menggunakan bahan terbaik yang tahan lama sehingga signage Anda tetap terlihat bagus selama bertahun-tahun.",
+    desc: "Bahan terbaik yang tahan lama — signage Anda tetap prima selama bertahun-tahun.",
   },
   {
     title: "Konsultasi Gratis 24 Jam",
-    desc: "Tim kami siap membantu Anda kapan saja via WhatsApp untuk mendiskusikan kebutuhan signage Anda.",
+    desc: "Tim kami siap membantu kapan saja via WhatsApp untuk mendiskusikan kebutuhan Anda.",
   },
   {
     title: "Pengerjaan Tepat Waktu",
-    desc: "Kami berkomitmen menyelesaikan setiap proyek sesuai timeline yang disepakati tanpa mengorbankan kualitas.",
+    desc: "Komitmen menyelesaikan setiap proyek sesuai timeline yang disepakati.",
   },
 ];
 ---
 <section class="about" id="about">
   <div class="container">
     <div class="about-grid">
+      <!-- Images side -->
       <div class="about-images">
         <div class="experience-badge">
           <span class="num">15+</span>
           <span class="text">Tahun<br/>Pengalaman</span>
         </div>
         <div class="about-img-main">
-          <img 
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=420&fit=crop" 
-            alt="Tim HurufLED sedang bekerja"
-            width="600"
-            height="420"
+          <!--
+            GANTI GAMBAR:
+            Letakkan foto workshop/tim di: public/images/about/workshop.jpg
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&h=500&fit=crop"
+            alt="Workshop HurufLED"
+            width="700" height="420"
           />
         </div>
         <div class="about-img-accent">
-          <img 
-            src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=300&h=200&fit=crop" 
-            alt="Workshop HurufLED"
-            width="300"
-            height="150"
+          <!--
+            GANTI GAMBAR:
+            Letakkan foto proses produksi di: public/images/about/produksi.jpg
+          -->
+          <img
+            src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=300&h=200&fit=crop"
+            alt="Proses Produksi"
+            width="300" height="150"
           />
         </div>
       </div>
+
+      <!-- Content side -->
       <div class="about-content">
-        <span class="section-label">About Us</span>
-        <h2 class="section-title">HURUFLED.COM</h2>
-        <p style="color:var(--text-light);margin-bottom:1rem;">
-          Kami adalah perusahaan Advertising Reklame yang berdiri sejak tahun 2009, bergerak di bidang 
-          jasa pembuatan reklame Outdoor dan Indoor.
+        <span class="section-label">ABOUT US</span>
+        <h2 class="section-title">
+          <span class="neon-cyan">HURUFLED</span><br/>.COM
+        </h2>
+        <p style="color:var(--text-muted);margin-bottom:1rem;line-height:1.8;">
+          Kami adalah perusahaan Advertising Reklame yang berdiri sejak tahun 2009, 
+          bergerak di bidang jasa pembuatan reklame Outdoor dan Indoor.
         </p>
-        <p style="color:var(--text-light);margin-bottom:2rem;">
-          Berbagai jenis reklame sudah kami selesaikan dengan baik. Kami memberikan material dengan kualitas 
-          yang baik demi kepuasan pelanggan kami, karena itulah kami terus maju dan berkembang di industri 
-          reklame ini.
+        <p style="color:var(--text-muted);margin-bottom:2rem;line-height:1.8;">
+          Berbagai jenis reklame sudah kami selesaikan dengan baik. Kami memberikan 
+          material dengan kualitas terbaik demi kepuasan pelanggan, karena itulah kami 
+          terus maju dan berkembang di industri reklame ini.
         </p>
         <div class="features-list">
           {features.map(f => (
@@ -66,8 +77,8 @@ const features = [
             </div>
           ))}
         </div>
-        <a href="http://bit.ly/cs-hurufled" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:1rem;">
-          💬 Hubungi Kami
+        <a href="http://bit.ly/cs-hurufled" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:1.5rem;">
+          ⚡ HUBUNGI KAMI
         </a>
       </div>
     </div>

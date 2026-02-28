@@ -1,34 +1,40 @@
 ---
 const items = [
   {
-    img: "https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=800&h=500&fit=crop",
+    img: "/images/portfolio/portfolio-1.jpg",
+    fallback: "https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?w=900&h=500&fit=crop",
     title: "Neon Box Restoran",
-    cat: "Neon Box"
+    cat: "NEON BOX"
   },
   {
-    img: "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=600&h=400&fit=crop",
+    img: "/images/portfolio/portfolio-2.jpg",
+    fallback: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
     title: "Huruf Timbul Stainless",
-    cat: "Huruf Timbul"
+    cat: "HURUF TIMBUL"
   },
   {
-    img: "https://images.unsplash.com/photo-1608501078713-8e445a709b39?w=600&h=400&fit=crop",
+    img: "/images/portfolio/portfolio-3.jpg",
+    fallback: "https://images.unsplash.com/photo-1486611367184-6053a8a7d404?w=600&h=400&fit=crop",
     title: "Billboard Outdoor",
-    cat: "Billboard"
+    cat: "BILLBOARD"
   },
   {
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
-    title: "LED Display Toko",
-    cat: "Acrylic LED"
-  },
-  {
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    title: "Pylon Sign Gedung",
-    cat: "Pylon Sign"
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+    img: "/images/portfolio/portfolio-4.jpg",
+    fallback: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&h=400&fit=crop",
     title: "Neonflex Dekorasi",
-    cat: "Neonflex"
+    cat: "NEONFLEX"
+  },
+  {
+    img: "/images/portfolio/portfolio-5.jpg",
+    fallback: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=600&h=400&fit=crop",
+    title: "Acrylic LED Toko",
+    cat: "ACRYLIC LED"
+  },
+  {
+    img: "/images/portfolio/portfolio-6.jpg",
+    fallback: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&h=400&fit=crop",
+    title: "Pylon Sign Gedung",
+    cat: "PYLON SIGN"
   },
 ];
 ---
@@ -36,20 +42,26 @@ const items = [
   <div class="container">
     <div class="portfolio-header">
       <div>
-        <span class="section-label">Gallery</span>
-        <h2 class="section-title">Portfolio Kami</h2>
+        <span class="section-label">GALLERY</span>
+        <h2 class="section-title">Portfolio <span class="neon-pink">Kami</span></h2>
       </div>
       <a href="http://bit.ly/cs-hurufled" target="_blank" rel="noopener" class="btn btn-outline">
-        Lihat Semua →
+        LIHAT SEMUA →
       </a>
     </div>
     <div class="portfolio-grid">
-      {items.map((item, i) => (
+      {items.map((item) => (
         <div class="portfolio-item">
-          <img src={item.img} alt={item.title} width="800" height="500" loading="lazy" />
+          <img
+            src={item.fallback}
+            alt={item.title}
+            width="900" height="500"
+            loading="lazy"
+            data-local={item.img}
+          />
           <div class="portfolio-overlay">
             <div>
-              <p style="color:var(--primary);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;">{item.cat}</p>
+              <div class="portfolio-overlay-cat">{item.cat}</div>
               <h4>{item.title}</h4>
             </div>
           </div>
@@ -58,3 +70,14 @@ const items = [
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('.portfolio-item img[data-local]').forEach((img) => {
+    const el = img as HTMLImageElement;
+    const localSrc = el.dataset.local;
+    if (!localSrc) return;
+    const testImg = new Image();
+    testImg.onload = () => { el.src = localSrc; };
+    testImg.src = localSrc;
+  });
+</script>
