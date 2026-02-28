@@ -1,0 +1,67 @@
+---
+const services = [
+  {
+    icon: "💡",
+    title: "Neon Box",
+    desc: "Neon box dengan pencahayaan LED yang terang dan tahan lama, cocok untuk berbagai jenis usaha indoor maupun outdoor.",
+  },
+  {
+    icon: "📺",
+    title: "Videotron",
+    desc: "Layar LED luar ruangan resolusi tinggi untuk menampilkan konten digital promosi yang menarik perhatian.",
+  },
+  {
+    icon: "🔤",
+    title: "Acrylic LED",
+    desc: "Huruf timbul berbahan acrylic dengan backlight LED yang elegan, memberikan kesan premium pada branding Anda.",
+  },
+  {
+    icon: "🔩",
+    title: "Galvanill",
+    desc: "Huruf timbul galvanill yang kokoh dan tahan cuaca ekstrem, ideal untuk fasad gedung dan area outdoor.",
+  },
+  {
+    icon: "✨",
+    title: "Stainless Steel",
+    desc: "Huruf timbul stainless steel berkualitas tinggi dengan finishing mirror atau brushed yang mewah dan tahan lama.",
+  },
+  {
+    icon: "🪧",
+    title: "Billboard",
+    desc: "Papan iklan besar di lokasi strategis untuk maksimalkan visibilitas merek Anda kepada jutaan orang.",
+  },
+  {
+    icon: "🌟",
+    title: "Neonflex",
+    desc: "Lampu neonflex fleksibel untuk dekorasi dan signage kreatif dengan berbagai warna dan desain unik.",
+  },
+  {
+    icon: "🏛️",
+    title: "Pylon Sign",
+    desc: "Tiang reklame (pylon/totem) megah sebagai landmark bisnis Anda yang terlihat dari jarak jauh.",
+  },
+];
+---
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Layanan Signage Kami</h2>
+      <p class="section-subtitle">
+        Kami melayani segala bentuk signage sebagai media dan sarana penunjang bisnis Anda dengan material berkualitas premium.
+      </p>
+    </div>
+    <div class="services-grid">
+      {services.map(s => (
+        <div class="service-card">
+          <div class="service-icon">{s.icon}</div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <a href="http://bit.ly/cs-hurufled" target="_blank" rel="noopener" class="service-link">
+            Hubungi Kami →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

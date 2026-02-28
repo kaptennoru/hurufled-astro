@@ -1,0 +1,66 @@
+---
+const testimonials = [
+  {
+    text: "HurufLED sangat profesional! Neon box untuk restoran kami hasilnya luar biasa. Cahayanya terang, rapi, dan sudah 2 tahun tidak ada masalah sama sekali.",
+    name: "Budi Santoso",
+    role: "Pemilik Restoran Padang Bintaro",
+    img: "https://i.pravatar.cc/150?img=11",
+  },
+  {
+    text: "Pelayanan cepat dan hasil memuaskan. Huruf timbul stainless untuk kantor kami terlihat sangat premium. Tim sangat responsif dan ramah.",
+    name: "Siti Rahayu",
+    role: "Marketing Manager, PT Maju Bersama",
+    img: "https://i.pravatar.cc/150?img=5",
+  },
+  {
+    text: "Sudah 3 kali order di HurufLED, selalu puas hasilnya! Harga terjangkau, kualitas premium, pengerjaan tepat waktu. Sangat direkomendasikan!",
+    name: "Ahmad Fauzi",
+    role: "Owner Toko Elektronik Ciputat",
+    img: "https://i.pravatar.cc/150?img=13",
+  },
+  {
+    text: "Videotron dari HurufLED tampilan luar biasa! Banyak pelanggan yang tertarik masuk ke toko kami karena tampilannya. Worth every penny!",
+    name: "Dewi Lestari",
+    role: "Owner Butik Fashion Tangerang",
+    img: "https://i.pravatar.cc/150?img=23",
+  },
+  {
+    text: "Pylon sign untuk komplek perumahan kami keren banget. Terlihat dari kejauhan dan sangat membantu tamu menemukan lokasi kami.",
+    name: "Hendra Wijaya",
+    role: "Project Manager Perumahan",
+    img: "https://i.pravatar.cc/150?img=15",
+  },
+  {
+    text: "Konsultasi gratis via WhatsApp sangat membantu kami yang awam soal signage. Tim HurufLED sabar menjelaskan sampai kami puas.",
+    name: "Rina Amelia",
+    role: "Pemilik Apotek",
+    img: "https://i.pravatar.cc/150?img=9",
+  },
+];
+---
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testi-header">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">Apa Kata Klien Kami?</h2>
+      <p class="section-subtitle">
+        Kepuasan pelanggan adalah prioritas utama kami. Dengarkan pengalaman mereka bersama HurufLED.
+      </p>
+    </div>
+    <div class="testi-grid">
+      {testimonials.map(t => (
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"{t.text}"</p>
+          <div class="testi-author">
+            <img src={t.img} alt={t.name} width="48" height="48" loading="lazy" />
+            <div>
+              <div class="testi-author-name">{t.name}</div>
+              <div class="testi-author-role">{t.role}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

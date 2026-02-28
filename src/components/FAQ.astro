@@ -1,0 +1,53 @@
+---
+const faqs = [
+  {
+    q: "Berapa lama proses pengerjaan produk signage?",
+    a: "Waktu pengerjaan bervariasi tergantung jenis dan kompleksitas produk. Neon box dan huruf timbul biasanya 7-14 hari kerja, videotron dan billboard bisa 2-4 minggu. Kami selalu berkomitmen menepati deadline yang disepakati."
+  },
+  {
+    q: "Apakah ada garansi untuk produk yang dibuat?",
+    a: "Ya! Semua produk yang kami buat mendapat garansi penuh 1 tahun. Jika ada kerusakan dalam masa garansi yang bukan disebabkan oleh kelalaian pengguna, kami akan memperbaiki atau mengganti tanpa biaya tambahan."
+  },
+  {
+    q: "Bagaimana cara mulai konsultasi dan pemesanan?",
+    a: "Sangat mudah! Hubungi kami via WhatsApp 24 jam di 081219136929 atau klik tombol 'Konsultasi Gratis' di website ini. Tim kami akan membantu menentukan produk yang tepat sesuai kebutuhan dan budget Anda."
+  },
+  {
+    q: "Apakah bisa survei lokasi sebelum pengerjaan?",
+    a: "Tentu! Untuk proyek besar seperti billboard, pylon sign, dan videotron, kami menyediakan layanan survei lokasi gratis untuk memastikan pemasangan yang tepat dan aman."
+  },
+  {
+    q: "Berapa area layanan pemasangan Anda?",
+    a: "Kami melayani area Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi) dan sekitarnya. Untuk area di luar Jabodetabek, silakan hubungi kami untuk diskusi lebih lanjut mengenai biaya pengiriman dan pemasangan."
+  },
+  {
+    q: "Apa metode pembayaran yang diterima?",
+    a: "Kami menerima pembayaran via transfer bank (BCA, Mandiri, BNI), GoPay, OVO, QRIS, dan tunai. Untuk proyek besar, tersedia sistem pembayaran bertahap (DP + pelunasan sebelum pengiriman)."
+  },
+];
+---
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Pertanyaan yang Sering Ditanyakan</h2>
+    </div>
+    <div class="faq-grid">
+      {faqs.map(f => (
+        <div class="faq-item">
+          <button class="faq-question">
+            {f.q}
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">{f.a}</div>
+        </div>
+      ))}
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <p style="color:var(--text-light);margin-bottom:1.25rem;">Masih ada pertanyaan lain?</p>
+      <a href="http://bit.ly/cs-hurufled" target="_blank" rel="noopener" class="btn btn-primary">
+        💬 Tanya via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
