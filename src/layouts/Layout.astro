@@ -1,13 +1,17 @@
 ---
+import { SpeedInsights } from "@vercel/speed-insights/astro";
+
 export interface Props {
   title?: string;
   description?: string;
 }
+
 const {
   title = "HurufLED — Spesialis Reklame & Signage Premium",
   description = "Jasa pembuatan huruf neon box, videotron, acrylic LED, huruf timbul, billboard, dan pylon sign. Berpengalaman sejak 2009. Garansi 1 tahun. Konsultasi 24 jam!"
 } = Astro.props;
 ---
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -18,22 +22,25 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <!--
-    GANTI FAVICON:
-    Letakkan favicon di: public/images/logo/favicon.ico
-    Lalu aktifkan baris di bawah:
-  -->
+
   <!-- <link rel="icon" type="image/x-icon" href="/images/logo/favicon.ico" /> -->
+
   <title>{title}</title>
 </head>
+
 <body>
   <slot />
+
+  <!-- ✅ Speed Insights (WAJIB sebelum </body>) -->
+  <SpeedInsights />
+
   <script>
     // Navbar scroll effect
-    const navbar = document.querySelector('.navbar') as HTMLElement;
+    const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
       navbar?.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
@@ -42,6 +49,7 @@ const {
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
     const mobileClose = document.querySelector('.mobile-close');
+
     hamburger?.addEventListener('click', () => mobileMenu?.classList.add('open'));
     mobileClose?.addEventListener('click', () => mobileMenu?.classList.remove('open'));
     mobileMenu?.querySelectorAll('a').forEach(a => {
@@ -63,57 +71,49 @@ const {
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
+          const el = entry.target;
           const target = parseInt(el.dataset.count || '0');
           const suffix = el.dataset.suffix || '';
           let current = 0;
           const step = target / 60;
+
           const timer = setInterval(() => {
             current = Math.min(current + step, target);
             el.textContent = Math.floor(current) + suffix;
             if (current >= target) clearInterval(timer);
           }, 16);
+
           counterObserver.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
+
     counters.forEach(c => counterObserver.observe(c));
 
-    // Animate on scroll (fade up)
+    // Animate on scroll
     const animateEls = document.querySelectorAll(
       '.service-card, .testi-card, .portfolio-item, .faq-item, .feature-item, .contact-item'
     );
+
     const aosObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
-            (entry.target as HTMLElement).style.opacity = '1';
-            (entry.target as HTMLElement).style.transform = 'translateY(0)';
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
           }, (i % 4) * 80);
+
           aosObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.08 });
+
     animateEls.forEach(el => {
-      (el as HTMLElement).style.opacity = '0';
-      (el as HTMLElement).style.transform = 'translateY(28px)';
-      (el as HTMLElement).style.transition = 'opacity .5s ease, transform .5s ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
       aosObserver.observe(el);
-	  import { SpeedInsights } from '@vercel/speed-insights/next';
- 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <head>
-        <title>Next.js</title>
-      </head>
-      <body>
-        {children}
-        <SpeedInsights />
     });
+  </script>
 </body>
 </html>
