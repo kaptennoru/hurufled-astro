@@ -99,15 +99,21 @@ const {
       (el as HTMLElement).style.transform = 'translateY(28px)';
       (el as HTMLElement).style.transition = 'opacity .5s ease, transform .5s ease';
       aosObserver.observe(el);
+	  import { SpeedInsights } from '@vercel/speed-insights/next';
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <title>Next.js</title>
+      </head>
+      <body>
+        {children}
+        <SpeedInsights />
     });
-	---
-import { SpeedInsights } from "@vercel/speed-insights/astro";
----
-
-<html>
-  <body>
-    <slot />
-    <SpeedInsights />
-  </script>
 </body>
 </html>
