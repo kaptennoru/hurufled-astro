@@ -100,6 +100,14 @@ const {
       (el as HTMLElement).style.transition = 'opacity .5s ease, transform .5s ease';
       aosObserver.observe(el);
     });
+	---
+import { SpeedInsights } from "@vercel/speed-insights/astro";
+---
+
+<html>
+  <body>
+    <slot />
+    <SpeedInsights />
   </script>
 </body>
 </html>
